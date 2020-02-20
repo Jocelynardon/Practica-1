@@ -1,0 +1,87 @@
+﻿@model IEnumerable<Pruebamodificarpersonas.Models.Jugador>
+
+<p>
+    <a asp-action="Create">Registrar Jugador</a>
+</p>
+
+<div class="form-horizontal">
+    <div class="form-group">
+        <div class="col-md-10">
+            <input type ="text" name="palabra" class="form-control"
+                   placeholder="Introduzca el texto de búsqueda" />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <i class="fa fa-refresh" style="color:blue;"></i>
+            <input type="submit" value="Buscar" class="btn btn-default" id="btngetdata">
+        </div>
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Club)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Posicion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Salario)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Jugador item in ViewBag.unicalista)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Apellido)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Club)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Posicion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Salario)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.ID })
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<hr />
+<div class="form-group">
+    <input type="submit" value="Importar archivo" class="btn btn-primary" />
+</div>
+<hr />
+<div class="form-group">
+    <input type="submit" value="Crear Archivo" class="btn btn-primary" />
+</div>
+
+
